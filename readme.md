@@ -1,7 +1,3 @@
-# Cassette Player
+# Cassette Player, But React
 
-A minimalist mixtape made entirely out of CSS. And a little bit of JS help to make the music work :)
-
-[Live Preview](https://casette-player.vercel.app/).
-
-![Mixtape preview.](https://iili.io/HfDg44V.png "Mixtape preview.")
+A minimalist mixtape made entirely out of CSS. Currently JS powers music playback but eventually JSX will take over and include a modal for changing music playback
