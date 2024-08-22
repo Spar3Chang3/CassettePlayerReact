@@ -16,7 +16,7 @@ body {
     overflow: hidden;
 }
 
-.page-container {
+.content {
     overflow: hidden;
     height: 100vh;
     width: 100%;
@@ -29,7 +29,7 @@ body {
 
 }
 
-.casette-body {
+.cassette-body {
     position: relative;
     width: 650px;
     height: 350px;
@@ -307,11 +307,11 @@ body {
 /* Responsive */
 
 @media screen and (max-width: 600px) {
-    .page-container {
+    .content {
         gap: 0px;
     }
 
-    .casette-body {
+    .cassette-body {
         transform: scale(0.65);
     }
 
@@ -325,7 +325,7 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-    .casette-body {
+    .cassette-body {
         transform: scale(0.50);
     }
 }
