@@ -5,27 +5,20 @@ import {duration} from "@mui/material";
 function App() {
 
     const tapeAudio = new Audio('/public/sounds/play.mp3');
-    const maxLength = 64;
+    const maxLength = 128;
 
     const [ isPlaying, setIsPlaying ] = useState(false);
     const [ playIcon, setPlayIcon ] = useState(<>&#x23F5;</>);
     const [ leftReel, setLeftReel ] = useState(0);
     const [ rightReel, setRightReel ] = useState(0);
-    const [ songLength, setSongLength ] = useState(0);
     const [ song, setSong ] = useState(new Audio('/public/sounds/love.mp3'));
 
     function play_pause () {
         setIsPlaying(playing => !playing);
     }
 
-    function setReels() {
-        setSongLength(songLength => Math.floor(song.duration));
-        setLeftReel(leftReel => 64);
-        setRightReel(rightReel => 1);
-    }
-
     const updateReels = () => {
-        const durationRatio = Math.floor(song.currentTime / songLength);
+        const durationRatio = song.currentTime / song.duration;
         console.log(durationRatio);
         if (durationRatio !== Infinity) {
             setLeftReel(Math.floor(maxLength * (1 - durationRatio)));
@@ -51,11 +44,19 @@ function App() {
 
     useEffect(() => {
         song.addEventListener('timeupdate', updateReels)
+        song.addEventListener('ended', () => {
+            tapeAudio.play();
+            setIsPlaying(false);
+        })
 
         return () => {
             song.removeEventListener('timeupdate', updateReels);
+            song.removeEventListener('ended', () => {
+                tapeAudio.play();
+                setIsPlaying(false);
+            })
         }
-    }, [song, songLength, maxLength])
+    }, [song, maxLength])
 
     const leftReelStyle = {
         width: leftReel + 'px'
@@ -87,8 +88,8 @@ function App() {
                                   <div className="teeth"></div>
                               </div>
                               <div className="visor">
-                                  <div className="inner-circle" style={leftReelStyle}></div>
-                                  <div className="inner-circle" style={rightReelStyle}></div>
+                                  <div className="reel1" style={leftReelStyle}></div>
+                                  <div className="reel2" style={rightReelStyle}></div>
                               </div>
                               <div className={`circle ${isPlaying ? 'circle-spin' : ''}`}>
                                   <div className="teeth"></div>

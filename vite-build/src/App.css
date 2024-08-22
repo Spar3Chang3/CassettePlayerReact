@@ -1,7 +1,7 @@
 :root {
 
-  --player-color: #faac52;
-  --label-color: #fc5214;
+  --player-color: #784895;
+  --label-color: #7A2ABF;
   --song-duration: 0;
 }
 
@@ -199,21 +199,23 @@ html {
   background-color: #eeebe0;
 }
 
-.inner-circle {
+.reel1 {
   position: absolute;
-  height: 65px;
-  background-color: #69696b;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
-  top: -10px;
-  left: -20px;
-  animation: shrinkLeft var(--song-duration) linear forwards;
-  animation-play-state: paused;
+  background-color: #202020;
+  top: -30px;
+  left: -30px;
 }
 
-.inner-circle:nth-child(2) {
-  left: 140px;
-  animation: growRight var(--song-duration) linear forwards;
-  animation-play-state: paused;
+.reel2 {
+  position: absolute;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #202020;
+  top: -30px;
+  right: -30px;
 }
 
 .button {
@@ -256,15 +258,6 @@ html {
   }
 }
 
-@keyframes shrinkLeft {
-  0% { transform: scale(1); }
-  100% { transform: scale(0.5); }
-}
-
-@keyframes growRight {
-  0% { transform: scale(0.5); }
-  100% { transform: scale(1); }
-}
 
 /* Responsive */
 
